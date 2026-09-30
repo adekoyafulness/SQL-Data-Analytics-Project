@@ -1,2 +1,2 @@
 # SQL-Data-Analytics-Project
-Exploratory Data Analysis (EDA) using SQL
+This contains scrips for Exploratory Data Analysis (EDA) using SQL
