@@ -78,29 +78,29 @@ GROUP BY
   3) Final Query: Combines all product results into one output
 ---------------------------------------------------------------------------*/
 SELECT 
-product_key,
-product_name,
-category,
-subcategory,
-cost,
-sales_history,
-last_sales_date,
-DATEDIFF (month, last_sales_date, GETDATE()) AS recency_in_month,
-total_order,
-total_customers,
-total_sales_amount,
-CASE WHEN total_sales_amount > 50000 THEN 'High-Performer'
-     WHEN total_sales_amount >= 10000 THEN 'Mid-Range'
-     ELSE 'Low-Performer'
-END AS product_segment,
-total_quantity,
-avg_selling_price,
--- Average Order Revenue
-CASE WHEN total_order = 0 THEN 0
-     ELSE total_sales_amount / total_order
-END AS avg_order_revenue,
--- Average Monthly Revenue
-CASE WHEN sales_history = 0 THEN total_sales_amount
-     ELSE total_sales_amount / sales_history
-END AS avg_monthly_revenue
+    product_key,
+    product_name,
+    category,
+    subcategory,
+    cost,
+    sales_history,
+    last_sales_date,
+    DATEDIFF (month, last_sales_date, GETDATE()) AS recency_in_month,
+    total_order,
+    total_customers,
+    total_sales_amount,
+    CASE WHEN total_sales_amount > 50000 THEN 'High-Performer'
+         WHEN total_sales_amount >= 10000 THEN 'Mid-Range'
+         ELSE 'Low-Performer'
+    END AS product_segment,
+    total_quantity,
+    avg_selling_price,
+    -- Average Order Revenue
+    CASE WHEN total_order = 0 THEN 0
+         ELSE total_sales_amount / total_order
+    END AS avg_order_revenue,
+    -- Average Monthly Revenue
+    CASE WHEN sales_history = 0 THEN total_sales_amount
+         ELSE total_sales_amount / sales_history
+    END AS avg_monthly_revenue
 FROM product_aggregation
